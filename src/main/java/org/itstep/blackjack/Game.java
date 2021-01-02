@@ -52,7 +52,7 @@ public class Game {
             log.info("Dealer take a card {}", card);
             publishDealerTakeCard(card);
         }
-        if(getWinner().equals("Player")){ player.AppdateMoney(money*2);}
+        if(getWinner().equals("Player")){ player.AppdateMoney(money*2); playerSetBet(player.getCash());}
         // TODO: вызвать publishGameOver(getWinner());
         log.info("Game over. Win {}", getWinner());
         publishGameOver(getWinner());
