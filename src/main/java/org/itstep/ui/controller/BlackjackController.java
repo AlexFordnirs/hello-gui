@@ -90,7 +90,7 @@ public class BlackjackController implements Initializable {
 
         @Override
         public void playerSetBet(int amount) {
-
+            lblCash.setText("Cash: "+ amount);
         }
 
         @Override

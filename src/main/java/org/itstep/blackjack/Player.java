@@ -23,7 +23,7 @@ public class Player {
         }
         cash -= amount;
     }
-
+     public  void AppdateMoney(int money){ this.cash+=money;}
     public void takeCard(Card card) {
         hand.addCard(card);
     }

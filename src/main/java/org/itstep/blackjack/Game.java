@@ -17,7 +17,7 @@ public class Game {
     private final Player player;
     private final Player dealer;
     private final Deck deck;
-
+    public  int money;
     public Game() {
         deck = new Deck();
         dealer = new Player(0);
@@ -52,6 +52,7 @@ public class Game {
             log.info("Dealer take a card {}", card);
             publishDealerTakeCard(card);
         }
+        if(getWinner().equals("Player")){ player.AppdateMoney(money*2);}
         // TODO: вызвать publishGameOver(getWinner());
         log.info("Game over. Win {}", getWinner());
         publishGameOver(getWinner());
@@ -60,6 +61,8 @@ public class Game {
     public void setBet(int amount) throws NoMoneyEnough {
         player.setBet(amount);
         // TODO: реализовать логику добавления ставки
+        money=amount;
+        playerSetBet(player.getCash());
     }
 
     public String getWinner() {
@@ -94,6 +97,9 @@ public class Game {
     }
     private void publishDealerTakeCard(Card card){
         eventListeners.forEach(l->l.dealerGetCard(card,dealer.getPoints()));
+    }
+    private void playerSetBet(int amount){
+        eventListeners.forEach(l -> l.playerSetBet(amount));
     }
 
     public void play() {
